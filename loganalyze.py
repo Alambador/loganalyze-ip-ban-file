@@ -83,6 +83,9 @@ for s in hackerAttempts:
         #matches.append(m.group(0))
         matches.append(m.group())
 
+# Remove any duplicate entries by turning the list into a set.
+uniqueMatches = list(set(matches))
+
 # Let's write the results out to a file
 '''
 Try to:
@@ -95,7 +98,7 @@ If an error occurs, tell the user.
 try:
 	banFileContents = open(''.join(banFilePath), "a") 
 	banFileContents.seek(2)
-	banFileContents.write('\n'.join(matches))
+	banFileContents.write('\n'.join(uniqueMatches))
 	banFileContents.close()
 except IOError:
 	print "Error: ban file or path not found!"
